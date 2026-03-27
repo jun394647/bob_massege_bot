@@ -1,0 +1,30 @@
+name: Daily Lunch Reminder
+
+on:
+  schedule:
+    # cron: 분 시 일 월 요일 (UTC 기준)
+    # 한국 시간(KST) 오전 11시는 UTC 기준 오전 2시입니다.
+    # 1-5는 월요일부터 금요일까지를 의미합니다.
+    - cron: '0 2 * * 1-5'
+  workflow_dispatch: # 수동으로 실행해볼 수 있는 버튼 생성
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run script
+        env:
+          MM_WEBHOOK_URL: ${{ secrets.MM_WEBHOOK_URL }}
+        run: python lunch_bot.py
