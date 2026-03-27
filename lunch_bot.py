@@ -6,7 +6,7 @@ def send_lunch_reminder():
     webhook_url = os.environ.get('MM_WEBHOOK_URL')
     
     payload = {
-        "text": "@all 🍚 오늘 메뉴 확인하셨나요?\nhttps://bob-ssafy.vercel.app/board"
+        "text": "@all 🍚 밥 묵자. \nhttps://bob-ssafy.vercel.app/board"
     }
     
     try:
