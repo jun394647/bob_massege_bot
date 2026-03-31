@@ -3,7 +3,7 @@ name: Daily Lunch Reminder
 on:
   schedule:
     # 한국 시간 오전 11:00 (UTC 02:00), 월-금 실행
-    - cron: '0 2 * * 1-5'
+    - cron: '0 0 * * 1-5'
   workflow_dispatch: # 수동 실행 버튼 활성화
 
 jobs:
